@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-
 </head>
 <body>
     <div class="container">
-        <h1>Expense Tracker</h1>
-        
+        <header>
+            <h1>Expense Tracker</h1>
+            <!-- Logout Button -->
+            <form action="{{ url_for('logout') }}" method="post">
+                <button type="submit">Logout</button>
+            </form>
+        </header>
         <!-- Add Expense Form -->
         <div class="expense-form">
             <h2>Add Expense</h2>
@@ -39,6 +43,22 @@
                 {% endfor %}
             </ul>
         </div>
+
+        <!-- Expense Charts -->
+        {% if category_totals %}
+        <h2>Expense Charts</h2>
+        <div class="charts-container">
+            <div class="chart">
+                <h3>Expense Distribution by Category</h3>
+                <img src="data:image/png;base64,{{ pie_chart_data }}" alt="Expense Distribution Pie Chart">
+            </div>
+            <div class="chart">
+                <h3>Total Expense Amount by Category</h3>
+                <img src="data:image/png;base64,{{ bar_chart_data }}" alt="Total Expense Amount Bar Chart">
+            </div>
+        </div>
+        {% endif %}
     </div>
+    <script src="{{ url_for('static', filename='theme.js') }}"></script>
 </body>
 </html>

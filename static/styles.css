@@ -1,18 +1,35 @@
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600");
+@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
+
+:root {
+    --background-color: #2C2C54; 
+    --text-color: #AAABB8; 
+    --input-border-color: #a8b2d1;
+    --input-bg-color: #ECECEC; 
+    --input-text-color: #2C2C54; 
+    --button-bg-color: #474787; 
+    --button-text-color: #ECECEC;
+    --button-hover-bg-color: #67729D; 
+    --chart-container-bg-color: #112240; 
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Titillium Web', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
 }
 
 .container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--background-color);
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 
 h1 {
     text-align: center;
@@ -22,7 +39,8 @@ h2 {
     margin-top: 20px;
 }
 
-.expense-form, .expense-report {
+.expense-form,
+.expense-report {
     margin-bottom: 40px;
 }
 
@@ -36,11 +54,14 @@ label {
 }
 
 input[type="text"],
+input[type="password"],
 input[type="number"] {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--input-border-color);
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color);
     box-sizing: border-box;
 }
 
@@ -48,15 +69,15 @@ button {
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: var(--button-hover-bg-color);
 }
 
 .total-expense {
@@ -70,4 +91,83 @@ button:hover {
 
 .category-list li {
     margin-bottom: 5px;
+}
+
+.charts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.chart {
+    width: 45%;
+    margin-bottom: 20px;
+    background-color: var(--chart-container-bg-color);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.chart img {
+    max-width: 100%;
+    height: auto;
+}
+/* Landing page styles */
+.clipboard {
+    position: relative;
+    width: 750px;
+    height: 750px;
+    background: linear-gradient(45deg, #2c2c54 25%, transparent 25%),
+        linear-gradient(315deg, #2c2c54 25%, transparent 25%),
+        linear-gradient(45deg, transparent 24%, #474787 25%, #474787 45%, transparent 45%),
+        linear-gradient(315deg, transparent 24%, #474787 25%, #474787 45%, transparent 45%);
+    background-color: rgba(0, 0, 0, 0);
+    background-size: 3em 3em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: #aaabb8;
+}
+
+.clipboard-content {
+    position: relative;
+    z-index: 1;
+    font-family: 'Squada One', cursive;
+}
+
+.clipboard h1 {
+    font-size: 3.5rem;
+    margin: 0;
+    margin-bottom: 1.5rem;
+    color: #ECECEC;
+}
+
+.clipboard p {
+    margin: 0;
+    margin-bottom: 1.5rem;
+}
+
+.clipboard .btn {
+    background-color: #f6b1f2;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.clipboard .btn:hover {
+    background-color: #67729D;
+}
+
+/* Media query for responsive design */
+@media screen and (max-width: 768px) {
+    .chart {
+        width: 100%;
+    }
 }
