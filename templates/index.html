@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Expense Tracker</h1>
+        
+        <!-- Add Expense Form -->
+        <div class="expense-form">
+            <h2>Add Expense</h2>
+            <form action="{{ url_for('add_expense') }}" method="post">
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <input type="text" id="category" name="category" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" name="amount" required>
+                </div>
+                <button type="submit">Add Expense</button>
+            </form>
+        </div>
+
+        <!-- Expense Report -->
+        <div class="expense-report">
+            <h2>Expense Report</h2>
+            <div class="total-expense">
+                <p>Total Expense: ${{ total_expense }}</p>
+            </div>
+            <ul class="category-list">
+                {% for category, total in category_totals.items() %}
+                    <li>{{ category }}: ${{ total }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
