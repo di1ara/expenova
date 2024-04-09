@@ -97,7 +97,7 @@ def generate_pie_chart(category_totals):
     labels = list(category_totals.keys())
     values = list(category_totals.values())
 
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(10, 8))
     plt.pie(values, labels=labels, autopct='%1.1f%%', startangle=140)
     plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle
     plt.title('Expense Distribution by Category')
@@ -116,7 +116,7 @@ def generate_bar_chart(category_totals):
     labels = list(category_totals.keys())
     values = list(category_totals.values())
 
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(10, 8))
     plt.bar(labels, values, color='skyblue')
     plt.xlabel('Category')
     plt.ylabel('Total Amount')
