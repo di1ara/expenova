@@ -4,6 +4,7 @@
 :root {
     --background-color: #2C2C54; 
     --text-color: #AAABB8; 
+    --title-color: #ECECEC;
     --input-border-color: #a8b2d1;
     --input-bg-color: #ECECEC; 
     --input-text-color: #2C2C54; 
@@ -11,6 +12,7 @@
     --button-text-color: #ECECEC;
     --button-hover-bg-color: #67729D; 
     --chart-container-bg-color: #112240; 
+    
 }
 
 body {
@@ -22,8 +24,8 @@ body {
 }
 
 .container {
-    max-width: 800px;
-    margin: 20px auto;
+    max-width: 600px;
+    margin: 50px auto;
     padding: 20px;
     background-color: var(--background-color);
     border-radius: 5px;
@@ -33,10 +35,13 @@ body {
 
 h1 {
     text-align: center;
+    color: var(--title-color)
 }
 
 h2 {
     margin-top: 20px;
+    color: var(--title-color)
+    
 }
 
 .expense-form,
@@ -113,6 +118,13 @@ button:hover {
     max-width: 100%;
     height: auto;
 }
+/* Media query for responsive design */
+@media screen and (max-width: 768px) {
+    .chart {
+        width: 100%;
+        
+    }
+}
 /* Landing page styles */
 .clipboard {
     position: relative;
@@ -154,7 +166,7 @@ button:hover {
 .clipboard .btn {
     background-color: #f6b1f2;
     color: #fff;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1.5rem;
     border: none;
     border-radius: 0.5rem;
     text-decoration: none;
@@ -165,9 +177,14 @@ button:hover {
     background-color: #67729D;
 }
 
-/* Media query for responsive design */
 @media screen and (max-width: 768px) {
-    .chart {
-        width: 100%;
+    .clipboard {
+        border-radius: 0;
+        width: auto; 
+        padding: 20px;
+    }
+
+    .clipboard h1 {
+        font-size: 3rem;
     }
 }

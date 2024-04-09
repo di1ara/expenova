@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://kit.fontawesome.com/2d42443209.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
@@ -21,7 +22,22 @@
             <form action="{{ url_for('add_expense') }}" method="post">
                 <div class="form-group">
                     <label for="category">Category:</label>
-                    <input type="text" id="category" name="category" required>
+                    <select id="category" name="category" required>
+                        <option value="" disabled selected>Select a category...</option>
+                        <option value="Rent">Rent</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Health">Health</option>
+                        <option value="Transportation">Transportation</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Groceries">Groceries</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Education">Education</option>
+                        <option value="Personal Care">Personal Care</option>
+                        <option value="Insurance">Insurance</option>
+                        <option value="Debt Repayment">Debt Repayment</option>
+                        <!-- Add more predefined categories here -->
+                    </select>
+                    <input type="text" id="custom_category" name="custom_category" placeholder="Or enter custom category">
                 </div>
                 <div class="form-group">
                     <label for="amount">Amount:</label>
@@ -39,10 +55,38 @@
             </div>
             <ul class="category-list">
                 {% for category, total in category_totals.items() %}
-                    <li>{{ category }}: ${{ total }}</li>
+                    <li>
+                        {% if category == "Rent" %}
+                            <i class="fas fa-home"></i><span> Rent</span> 
+                        {% elif category == "Travel" %}
+                            <i class="fas fa-plane"></i><span> Travel</span> 
+                        {% elif category == "Health" %}
+                            <i class="fas fa-medkit"></i><span> Health</span> 
+                        {% elif category == "Transportation" %}
+                            <i class="fas fa-car"></i><span> Transportation</span> 
+                        {% elif category == "Entertainment" %}
+                            <i class="fas fa-film"></i><span> Entertainment</span> 
+                        {% elif category == "Groceries" %}
+                            <i class="fas fa-shopping-basket"></i><span> Groceries</span> 
+                        {% elif category == "Clothing" %}
+                            <i class="fas fa-tshirt"></i><span> Clothing</span> 
+                        {% elif category == "Education" %}
+                            <i class="fas fa-graduation-cap"></i><span> Education</span> 
+                        {% elif category == "Personal Care" %}
+                            <i class="fas fa-spa"></i><span> Personal Care</span> 
+                        {% elif category == "Insurance" %}
+                            <i class="fas fa-shield-alt"></i><span> Insurance</span> 
+                        {% elif category == "Debt Repayment" %}
+                            <i class="fas fa-hand-holding-usd"></i><span> Debt Repayment</span> 
+                        {% else %}
+                            <span>{{ category }}</span>
+                        {% endif %}
+                        : ${{ total }}
+                    </li>
                 {% endfor %}
             </ul>
         </div>
+      
 
         <!-- Expense Charts -->
         {% if category_totals %}
