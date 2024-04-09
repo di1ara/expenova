@@ -217,9 +217,9 @@ button:hover {
 
 footer {
     background-color: #2c2c54;
-    padding: 10px; /* Padding around the content */
-    text-align: center; /* Center-align the content */
-    position: fixed; /* Fixed position */
-    bottom: 0; /* Stick to the bottom */
-    width: 100%; /* Full width */
+    padding: 10px;
+    text-align: center; 
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
 }
