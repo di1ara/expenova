@@ -136,8 +136,15 @@ def generate_bar_chart(category_totals):
 def add_expense():
     if 'user_id' not in session:
         return redirect(url_for('login'))
+    
     user_id = session['user_id']
-    category = request.form['category']
+    category = request.form.get('category')
+    custom_category = request.form.get('custom_category')
+    
+    # If category is not selected, use custom category if provided, otherwise set it to 'Other'
+    if not category:
+        category = custom_category.strip() if custom_category else 'Other'
+    
     amount = float(request.form['amount'])
     
     new_expense = Expense(user_id=user_id, category=category, amount=amount)
@@ -145,8 +152,6 @@ def add_expense():
     db.session.commit()
     
     return redirect(url_for('home'))
-
-
 
 # Route to handle user logout
 @app.route('/logout', methods=['POST'])
