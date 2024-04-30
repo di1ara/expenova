@@ -1,7 +1,6 @@
 # Expenova
 
 Welcome to Expenova, a web application for managing expenses efficiently.
-you can visit: https://expenova.yalniz.dev/
 
 ## Features
 
